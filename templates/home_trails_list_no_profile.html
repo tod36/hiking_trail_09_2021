@@ -1,0 +1,40 @@
+{% extends 'base_home.html' %}
+{% load static %}
+
+{% block title %}
+    {{ trail.title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+    {% for trail in trails %}
+        <div class="card mb-3">
+            <div class="card-header">
+                Difficulty: <a href="{{ trail.difficulty.get_absolute_url }}">{{ trail.difficulty }}</a>
+            </div>
+            <div class="card-body">
+                <div class="media">
+                    {% if trail.photo %}
+                        <img src="{{ trail.photo.url }}" alt="" width="350" class="mr-3">
+                    {% else %}
+                        <img src="../static/fon.jpg" alt="" class="mr-3">
+                    {% endif %}
+                    <div class="media-body">
+                        <h5 class="card-title">{{ trail.title }}</h5>
+                        <p class="card-text">{{ trail.content|safe|linebreaks|truncatewords:50 }}</p>
+                        <a href="{{ trail.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+{#                        <a href="{% url 'trail_update_form' trail.id %}" class="btn btn-primary">Edit trail</a>#}
+{#                        <a href="{% url 'trail_check_delete' trail.id %}" class="btn btn-primary">Delete trail</a>#}
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer text-muted">
+                {{ item.created_at|date:"Y-m-d H:i:s" }}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

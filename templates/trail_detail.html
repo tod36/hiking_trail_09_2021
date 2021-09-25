@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ trails.title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="card mb-3">
+    <div class="card-header">
+        Difficulty: <a href="{{ trails.difficulties.get_absolute_url }}">{{ trails.difficulty }}</a>
+    </div>
+    <div class="card-body">
+        <div class="media">
+            {% if trails.photo %}
+            <img src="{{ trails.photo.url }}" alt="" width="350" class="mr-3">
+            {% else %}
+            <img src="../static/fon.jpg" alt="" class="mr-3">
+            {% endif %}
+            <div class="media-body">
+                <h5 class="card-title">{{ trails.title }}</h5>
+                <p class="card-text">{{ trails.content|safe|linebreaks|truncatewords:50 }}</p>
+                <a href="{% url 'home' %}" class="btn btn-primary">Main</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-footer text-muted">
+        {{ trails.created_at|date:"Y-m-d H:i:s" }}
+    </div>
+</div>
+
+{% endblock %}

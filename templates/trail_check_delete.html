@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <h1>Delete trail</h1>
+    <div class="form">
+        <form action="" method="post">
+            {% csrf_token %}
+            {#            {{ form.as_p }}#}
+            <p>Are you sure you want to delete "{{ trail }}"?</p>
+            <input type="submit" value="Confirm"/>
+        </form>
+    </div>
+{% endblock %}

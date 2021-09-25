@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Are you sure?</title>
+</head>
+<body>
+<div class="form">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Are you sure you want to delete "{{ trail }}"?</p>
+        <button type="submit" class="btn btn-primary btn-block">Delete</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+{% for trail in difficulty %}
+<div class="card mb-3">
+    <div class="card-header">
+        Difficulty: <a href="{{ trail.difficulty.get_absolute_url }}">{{ trail.difficulty }}</a>
+    </div>
+    <div class="card-body">
+        <div class="media">
+            {% if trail.photo %}
+            <img src="{{ trail.photo.url }}" alt="" width="350" class="mr-3">
+            {% else %}
+            <img src="../static/fon.jpg" alt="" class="mr-3">
+            {% endif %}
+            <div class="media-body">
+                <h5 class="card-title">{{ trail.title }}</h5>
+                <p class="card-text">{{ trail.content|safe|linebreaks|truncatewords:50 }}</p>
+                <a href="{% url 'trail_detail' trail.id %}" class="btn btn-primary">Read more...</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-footer text-muted">
+        {{ trail.created_at|date:"Y-m-d H:i:s" }}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+
+{#from zina.space:::::::::::::::::::::::::::;#}
+{#<section id="footer">#}
+{#    <ul class="icons">#}
+{#        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>#}
+{#        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>#}
+{#        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>#}
+{#        <li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>#}
+{#        <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>#}
+{#        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1479.2160453580009!2d24.725591346336735!3d42.141039612757254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd1d2707fff2f%3A0x2b7a4a037f355ced!2sbul.%20%22Koprivshtitsa%22%2019%D0%93%2C%204002%20Western%20Industrial%20Zone%2C%20Plovdiv!5e0!3m2!1sen!2sbg!4v1583760195867!5m2!1sen!2sbg"#}
+{#                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>#}
+{##}
+{##}
+{#        <div class="sp-col sp-span-3 sp-contact-info">#}
+{#            <div>#}
+{#                <div>#}
+{#                    <h3>Contact Us</h3>#}
+{#                </div>#}
+{#                <div>#}
+{#                    <p><span class="icon-phone">&nbsp;&nbsp; Tel: +1 800 987 65 43</span></p>#}
+{#                    <p><span class="icon-printer">&nbsp;&nbsp; Fax: +1 800 987 65 43</span></p>#}
+{#                    <p><span class="icon-mail">&nbsp;&nbsp; Email: email@yourcompany.com</span></p>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="sp-col sp-span-6">#}
+{#            <div>#}
+{#                <iframe width="100%" height="250" style="border: 0;"#}
+{#                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d739.5981715096826!2d24.750063507431737!3d42.14188298340075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd1baac9c9b95%3A0xa16359346cf1da8!2spl.+%22Tsentralen%22%2C+4000+Plovdiv!5e0!3m2!1sen!2sbg!4v1428561339150"#}
+{#                        frameborder="0"></iframe>#}
+{#            </div>#}
+{#            <div>&nbsp;</div>#}
+{#        </div>#}
+{#        <div class="sp-col sp-span-3 sp-social">#}
+{#            <div>#}
+{#                <h3>Follow Us</h3>#}
+{#            </div>#}
+{#            <div>#}
+{#                <ul class="sp-social-block">#}
+{#                    <li><a class="icon-facebook" target="_blank" title="facebook" href="http://www.facebook.com/"#}
+{#                           rel="noopener noreferrer"><img src="/modules/admin/images/blank.gif" alt="Facebook"/></a>#}
+{#                    </li>#}
+{#                    <li><a class="icon-twitter" target="_blank" title="twitter" href="http://www.twitter.com/"#}
+{#                           rel="noopener noreferrer"><img src="/modules/admin/images/blank.gif" alt="Twitter"/></a></li>#}
+{#                    <li><a class="icon-google-plus" target="_blank" title="google+" href="http://www.google.com/"#}
+{#                           rel="noopener noreferrer"><img src="/modules/admin/images/blank.gif" alt="Google+"/></a></li>#}
+{#                    <li><a class="icon-linkedin" target="_blank" title="linkedin" href="http://www.linkedin.com/"#}
+{#                           rel="noopener noreferrer"><img src="/modules/admin/images/blank.gif" alt="Linkedin"/></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{##}
+{#        https://goo.gl/maps/CixiYRbhDP7vMLg16#}
+{##}
+{#    </ul>#}
+{#    <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a#}
+{#            href="http://unsplash.com">Unsplash</a>.</p>#}
+{#</section>#}
+{##}
+{#</div>#}
+

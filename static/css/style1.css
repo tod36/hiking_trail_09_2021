@@ -1,0 +1,7 @@
+body {
+    background-image: url("../back.jpg");
+    /*background-color: #5bb28c;*/
+    background-position: top center;
+    background-repeat: no-repeat;
+    margin-top: 0px;
+}

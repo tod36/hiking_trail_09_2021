@@ -1,0 +1,6 @@
+{% load trails_tags %}
+<div class="list-group">
+    {% for difficulty in difficulties %}
+    <a href="{{ difficulty.get_absolute_url }}" class="list-group-item list-group-item-action">{{ difficulty.title }}</a>
+    {% endfor %}
+</div>
